@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Logo from '../../../images/olx-logo.png';
+import Logo from '../../olx-logo.png';
 import './Login.css';
 
 function Login() {
