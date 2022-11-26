@@ -2,27 +2,32 @@ import React, { useContext, useState } from 'react';
 import Logo from '../../olx-logo.png';
 import { FirebaseContext } from '../../Store/FirebaseContext';
 import './Signup.css';
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function Signup() {
 
+  const {Firebase} = useContext(FirebaseContext);
+  const navigate = useNavigate()
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassWord] = useState('');
   const [phone, setPhone] = useState('');
-
-  const {Firebase} = useContext(FirebaseContext)
-
   const handleSubmit =(e)=>{
     e.preventDefault()
     console.log(Firebase)
+    Firebase.auth().createUserWithEmailAndPassword(email, password).then((result) =>{
+      result.user.updateProfile({displayName:userName}).then(()=>{
+        Firebase.firestore().collection("users").add({
+          id:result.user.uid,
+          username:userName,
+          phone:phone
+        }).then(()=>{
+          navigate('/login')
+        })
+      })
+    })
   }
-
-  Firebase.auth().createUserWithEmailAndPassword(email, password).then((result) =>{
-    result.user.updateProfile({displayName:userName})
-  })
-
   return (
     <div>
       <div className="signupParentDiv">
