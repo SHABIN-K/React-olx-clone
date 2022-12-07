@@ -14,10 +14,10 @@ import {AuthContext,FirebaseContext} from './Store/Context'
 
 function App() {
   const {setUser} = useContext(AuthContext)
-  const {firebase} = useContext(FirebaseContext)
+  const {Firebase} = useContext(FirebaseContext)
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user)=>{
+    Firebase.auth().onAuthStateChanged((user)=>{
       setUser(user)
     })
     
