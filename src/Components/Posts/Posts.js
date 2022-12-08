@@ -4,10 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import Heart from '../../assets/Heart';
 import { FirebaseContext } from '../../Store/Context';
 import './Post.css';
+import { PostContext } from '../../Store/PostContext';
+
 
 function Posts() {
   const {Firebase} = useContext(FirebaseContext);
-  const [products, setProducts] = useState([])
+  const {setPostDetails} = useContext(PostContext);
+
+  const [products, setProducts] = useState([]);
+
   const navigate = useNavigate();
 
 
@@ -31,12 +36,15 @@ function Posts() {
           <span>View more</span>
         </div>
         <div 
-        className="cards" 
-        onClick={()=>{navigate('/view')}}>
+        className="cards" >
           {products.map(product=>{
             return(
             <div
             className="card"
+            onClick={()=>{
+              setPostDetails(product);
+              navigate('/view');
+            }}
           >
             <div className="favorite">
               <Heart></Heart>
