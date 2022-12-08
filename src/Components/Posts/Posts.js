@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Heart from '../../assets/Heart';
 import { FirebaseContext } from '../../Store/Context';
@@ -7,6 +8,7 @@ import './Post.css';
 function Posts() {
   const {Firebase} = useContext(FirebaseContext);
   const [products, setProducts] = useState([])
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -28,10 +30,11 @@ function Posts() {
           <span>Quick Menu</span>
           <span>View more</span>
         </div>
-        <div className="cards">
+        <div 
+        className="cards" 
+        onClick={()=>{navigate('/view')}}>
           {products.map(product=>{
             return(
-
             <div
             className="card"
           >
@@ -66,6 +69,7 @@ function Posts() {
 
             <div
             className="card"
+            onClick={()=>{navigate('/view')}}
           >
             <div className="favorite">
               <Heart></Heart>

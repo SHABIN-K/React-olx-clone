@@ -6,6 +6,7 @@ import Signup from './Pages/Signup'
 import Login from "./Pages/Login";
 import Create from './Pages/Create'
 import {AuthContext,FirebaseContext} from './Store/Context'
+import View from './Pages/ViewPost'
 /**
  * ?  =====Import Components=====
  * 
@@ -31,6 +32,7 @@ function App() {
       <Route path="signup" element={<Signup/>} />
       <Route path="login" element={<Login/>} />
       <Route path="create" element={<Create/>} />
+      <Route path="view" element={<View/>} />
       </Routes>
     </div>
   );
