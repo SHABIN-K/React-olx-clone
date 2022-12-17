@@ -4,9 +4,9 @@ import { createContext } from 'react'
 
 export const PostContext = createContext(null)
 
-export default function Post ({children}){
+function Post ({children}){
 
-    const [PostDetails, setPostDetails] = useState(null)
+    const [PostDetails, setPostDetails] = useState()
     return(
         <PostContext.Provider value={{PostDetails,setPostDetails}}>
             {children}
@@ -14,3 +14,4 @@ export default function Post ({children}){
     )
 }
 
+export default Post 

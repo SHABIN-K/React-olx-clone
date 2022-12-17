@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import { FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
 import './View.css';
 
 
 function View() {
-  const [userDetails, setuserDetails] = useState([]);
+  const [userDetails,setuserDetails] = useState();
 
   const {PostDetails} = useContext(PostContext);
   const {Firebase} = useContext(FirebaseContext);
@@ -18,9 +19,9 @@ function View() {
       });
     })
   },[])
-  return ( 
+  return (
     <div className="viewParentDiv">
-       {userDetails && PostDetails && <div>
+     { PostDetails &&<div>
       <div className="imageShowDiv">
         <img
           src={PostDetails.url}
@@ -34,12 +35,12 @@ function View() {
           <p>{PostDetails.category}</p>
           <span>{PostDetails.createdAt}</span>
         </div>
-       <div className="contactDetails">
+          </div>
+        <div className="contactDetails">
           <p>Seller details</p>
           <p>{userDetails.username}</p>
           <p>{userDetails.phone}</p>
         </div>
-      </div>
       </div>}
     </div>
   );
