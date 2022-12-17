@@ -12,8 +12,8 @@ function View() {
   const {Firebase} = useContext(FirebaseContext);
 
   useEffect(()=>{
-    const {userId} = PostDetails;
-    Firebase.firestore().collection('users').where('id','==',userId).get().then((res)=>{
+    const {userid} = PostDetails;
+    Firebase.firestore().collection('users').where('id','==',userid).get().then((res)=>{
       res.forEach(doc => {
         setuserDetails(doc.data())
       });
@@ -21,7 +21,6 @@ function View() {
   },[])
   return (
     <div className="viewParentDiv">
-     { PostDetails &&<div>
       <div className="imageShowDiv">
         <img
           src={PostDetails.url}
@@ -35,13 +34,13 @@ function View() {
           <p>{PostDetails.category}</p>
           <span>{PostDetails.createdAt}</span>
         </div>
-          </div>
+       {userDetails &&
         <div className="contactDetails">
           <p>Seller details</p>
           <p>{userDetails.username}</p>
           <p>{userDetails.phone}</p>
-        </div>
-      </div>}
+        </div>}
+      </div>
     </div>
   );
 }
