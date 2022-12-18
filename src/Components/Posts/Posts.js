@@ -74,10 +74,12 @@ function Posts() {
         <div className="cards">
         {products.map(product=>{
             return(
-
             <div
             className="card"
-            onClick={()=>{navigate('/view')}}
+            onClick={()=>{
+              setPostDetails(product);
+              navigate('/view')
+            }}
           >
             <div className="favorite">
               <Heart></Heart>
