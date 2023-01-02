@@ -5,13 +5,13 @@ import "firebase/compat/storage";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCz2ErScncX0smYO6YVwuFYbLXGqzXudmI",
-    authDomain: "olx-clone-94fa5.firebaseapp.com",
+    apiKey: "AIzaSyFYbLXGqzXudmI",
+    authDomain: "olxaseapp.com",
     projectId: "olx-clone-94fa5",
-    storageBucket: "olx-clone-94fa5.appspot.com",
+    storageBucket: "olx-clonpspot.com",
     messagingSenderId: "278519480276",
-    appId: "1:278519480276:web:6e3152187ca510c930a041",
-    measurementId: "G-SQ565FSXJ5"
+    appId: "1:19480276:we",
+    measurementId: ""
   };
 
   export const Firebase = firebase.initializeApp(firebaseConfig);
